@@ -1,11 +1,15 @@
 
+class Array
+	def to_hash # рефакторим лишний отступ
+		Hash[self]
+	end
+end
+
 
 def diff a, b
-	Hash[
-		(a.keys + b.keys).uniq.map do |key| # теперь нужны ключи из обоих массивов
-			[key, [a[key],  b[key]]]
-		end
-	]
+	(a.keys + b.keys).uniq.map do |key| # теперь нужны ключи из обоих массивов
+		[key, [a[key],  b[key]]]
+	end.to_hash
 end
 
 
